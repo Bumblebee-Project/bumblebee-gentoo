@@ -1,0 +1,12 @@
+# ChangeLog for x11-misc/virtualgl
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*virtualgl-9999 (24 Feb 2012)
+*virtualgl-2.3-r1 (24 Feb 2012)
+
+  24 Feb 2012; Vadim A. Misbakh-Soloviev <mva@mva.name> +files/vgl.confd,
+  +files/vgl.initd, +metadata.xml, +virtualgl-2.3-r1.ebuild,
+  +virtualgl-9999.ebuild:
+  first commit
+
