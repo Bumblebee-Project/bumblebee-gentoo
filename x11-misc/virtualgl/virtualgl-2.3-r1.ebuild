@@ -69,7 +69,6 @@ mlib_configure() {
 		-DTJPEG_LIBRARY=/usr/$(get_libdir)/libturbojpeg.so
 		-DCMAKE_LIBRARY_PATH=/usr/lib32
 		-DVGL_FAKELIBDIR=/usr/fakelib/32
-
 	)
 	cmake-utils_src_configure
 	emake || die
@@ -82,12 +81,14 @@ src_configure() {
 	use amd64 && use multilib && ABI=x86 mlib_configure
 	mycmakeargs=(
 		$(cmake-utils_use ssl VGL_USESSL)
-		-DVGL_FAKELIBDIR=/usr/fakelib/64
 		-DVGL_DOCDIR=/usr/share/doc/"${P}"
+		-DVGL_LIBDIR=/usr/$(get_libdir)
 		-DTJPEG_INCLUDE_DIR=/usr/include
 		-DTJPEG_LIBRARY=/usr/$(get_libdir)/libturbojpeg.so
+		-DCMAKE_LIBRARY_PATH=/usr/lib64
+		-DVGL_FAKELIBDIR=/usr/fakelib/64
 	)
-		cmake-utils_src_configure
+	cmake-utils_src_configure
 }
 
 src_install() {

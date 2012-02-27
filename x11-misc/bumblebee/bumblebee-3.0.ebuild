@@ -35,8 +35,8 @@ DEPEND=">=sys-devel/autoconf-2.68
 	dev-libs/glib:2
 	x11-libs/libX11
 	dev-libs/libbsd
-	sys-apps/help2man
-	${RDEPEND}"
+	sys-apps/help2man"
+
 src_configure() {
 	( ! use video_cards_nvidia && ! use video_cards_nouveau ) && \
 	die "You should enable at least one of supported VIDEO_CARDS!"
