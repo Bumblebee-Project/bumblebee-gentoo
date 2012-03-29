@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  29 Mar 2012; Vadim A. Misbakh-Soloviov <mva@gentoo.org> Manifest:
+  Nothing new. Just commit signed metadata.
+
 *bbswitch-9999 (24 Feb 2012)
 *bbswitch-0.4.1-r1 (24 Feb 2012)
 
