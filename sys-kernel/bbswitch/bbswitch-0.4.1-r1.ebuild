@@ -14,7 +14,7 @@ if [[ ${PV} =~ "9999" ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/downloads/Bumblebee-Project/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi;
 
 inherit eutils linux-mod ${SCM_ECLASS}
