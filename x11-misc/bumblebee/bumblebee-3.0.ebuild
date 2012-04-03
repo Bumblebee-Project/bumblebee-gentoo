@@ -22,10 +22,10 @@ inherit multilib eutils ${SCM_ECLASS}
 SLOT="0"
 LICENSE="GPL-2"
 
-IUSE="video_cards_nouveau video_cards_nvidia"
+IUSE="video_cards_nouveau video_cards_nvidia powersave"
 
 RDEPEND="x11-misc/virtualgl
-	sys-kernel/bbswitch
+	powersave? ( sys-kernel/bbswitch )
 	virtual/opengl
 	x11-base/xorg-drivers[video_cards_nvidia?,video_cards_nouveau?]"
 DEPEND=">=sys-devel/autoconf-2.68
@@ -62,8 +62,8 @@ pkg_preinst() {
 pkg_postinst() {
 	! use video_cards_nvidia && rm "${DESTDIR}"/etc/bumblebee/xorg.conf.nvidia
 	! use video_cards_nouveau && rm "${DESTDIR}"/etc/bumblebee/xorg.conf.nouveau
-
 	ewarn "This is *NOT* all! Bumblebee still *NOT* ready to use."
 	ewarn "You may need to setup your /etc/bumblebee/bumblebee.conf!"
+	ewarn "For example, default config suggests you have bbswitch installed."
 	ewarn "Also you should add your user to 'bumblebee' group."
 }
