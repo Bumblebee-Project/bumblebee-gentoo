@@ -3,7 +3,7 @@
 DISPLAY="${DISPLAY:-:0}"
 
 # common case (work in all tested environments):
-XAUTHORITY="$(ps ww -C X,Xorg -o args= --sort=-stime | grep -m 1 -o '\B[-]auth\s*/var/run/\S*auth\S*' | cut -d ' ' -f 2)"
+XAUTHORITY="$(ps ww -C X,Xorg -o args= --sort=-stime | grep -m 1 -o '\B[-]auth\s*/var\S*auth\S*' | cut -d ' ' -f 2)"
 # Old common case (work not in all environments)
 # XAUTHORITY="$(ps wwwaux | perl -nle '/(X|[xX]org).*$ENV{DISPLAY}.*-auth (\S+)/ && print $2')"
 # kdm and some others:
