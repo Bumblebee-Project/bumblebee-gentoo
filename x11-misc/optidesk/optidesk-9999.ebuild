@@ -20,7 +20,7 @@ fi;
 inherit autotools eutils ${SCM_ECLASS}
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 
 IUSE=""
 
@@ -34,33 +34,3 @@ src_prepare() {
 	epatch_user
 	eautoreconf
 }
-#src_configure() {
-#	( ! use video_cards_nvidia && ! use video_cards_nouveau ) && \
-#	die "You should enable at least one of supported VIDEO_CARDS!"
-#
-#	use video_cards_nvidia &&
-#	ECONF_PARAMS="CONF_DRIVER=nvidia CONF_DRIVER_MODULE_NVIDIA=nvidia \
-#	CONF_LDPATH_NVIDIA=/usr/$(get_libdir)/opengl/nvidia/lib \
-#	CONF_MODPATH_NVIDIA=/usr/$(get_libdir)/opengl/nvidia/lib,/usr/$(get_libdir)/opengl/nvidia/extensions,/usr/$(get_libdir)/xorg/modules/drivers,/usr/$(get_libdir)/xorg/modules"
-#	econf ${ECONF_PARAMS}
-#}
-#
-#src_install() {
-#	use video_cards_nvidia && newconfd "${FILESDIR}"/bumblebee.nvidia-confd bumblebee
-#	use video_cards_nouveau && newconfd "${FILESDIR}"/bumblebee.nouveau-confd bumblebee
-#	newinitd "${FILESDIR}"/bumblebee.initd bumblebee
-#	default
-#}
-#
-#pkg_preinst() {
-#	enewgroup bumblebee;
-#}
-#
-#pkg_postinst() {
-#	! use video_cards_nvidia && rm "${DESTDIR}"/etc/bumblebee/xorg.conf.nvidia
-#	! use video_cards_nouveau && rm "${DESTDIR}"/etc/bumblebee/xorg.conf.nouveau
-#	ewarn "This is *NOT* all! Bumblebee still *NOT* ready to use."
-#	ewarn "You may need to setup your /etc/bumblebee/bumblebee.conf!"
-#	ewarn "For example, default config suggests you have bbswitch installed."
-#	ewarn "Also you should add your user to 'bumblebee' group."
-#}

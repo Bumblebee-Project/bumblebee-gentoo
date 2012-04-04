@@ -1,3 +1,6 @@
 # ChangeLog for x11-misc/optidesk
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+  04 Apr 2012; Vadim A. Misbakh-Soloviov <mva@gentoo.org> optidesk-9999.ebuild:
+  fixed #9
+
