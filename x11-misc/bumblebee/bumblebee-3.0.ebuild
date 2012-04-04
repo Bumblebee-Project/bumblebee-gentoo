@@ -22,7 +22,7 @@ inherit multilib eutils ${SCM_ECLASS}
 SLOT="0"
 LICENSE="GPL-2"
 
-IUSE="video_cards_nouveau video_cards_nvidia powersave"
+IUSE="video_cards_nouveau video_cards_nvidia +powersave"
 
 RDEPEND="x11-misc/virtualgl
 	powersave? ( sys-kernel/bbswitch )
