@@ -17,7 +17,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi;
 
-inherit multilib eutils ${SCM_ECLASS}
+inherit autotools multilib eutils ${SCM_ECLASS}
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -36,6 +36,13 @@ DEPEND=">=sys-devel/autoconf-2.68
 	x11-libs/libX11
 	dev-libs/libbsd
 	sys-apps/help2man"
+
+src_prepare() {
+	epatch_user
+	if [[ ${PV} =~ "9999" ]]; then
+		eautoreconf
+	fi
+}
 
 src_configure() {
 	( ! use video_cards_nvidia && ! use video_cards_nouveau ) && \
