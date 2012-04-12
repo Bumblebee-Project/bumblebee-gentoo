@@ -50,7 +50,7 @@ src_configure() {
 
 	use video_cards_nvidia &&
 	ECONF_PARAMS="CONF_DRIVER=nvidia CONF_DRIVER_MODULE_NVIDIA=nvidia \
-	CONF_LDPATH_NVIDIA=/usr/$(get_libdir)/opengl/nvidia/lib \
+	CONF_LDPATH_NVIDIA=/usr/$(get_libdir)/opengl/nvidia/lib:/usr/lib32/opengl/nvidia/lib \
 	CONF_MODPATH_NVIDIA=/usr/$(get_libdir)/opengl/nvidia/lib,/usr/$(get_libdir)/opengl/nvidia/extensions,/usr/$(get_libdir)/xorg/modules/drivers,/usr/$(get_libdir)/xorg/modules"
 	econf ${ECONF_PARAMS}
 }
