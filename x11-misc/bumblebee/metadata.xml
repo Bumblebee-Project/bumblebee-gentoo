@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
- <email>mva@mva.name</email>
- <description>This is my own sandbox overlay. If you have any issues, please contact me via e-mail, jabber (same), or IRC (Freenode, RusNet)</description> 
- <name>Vadim A. Misbakh-Soloviev</name>
-</maintainer>
- <longdescription>Long description of the package</longdescription> 
-<use>
-</use>
+  <maintainer>
+    <email>mva@mva.name</email>
+    <description>
+      If you have any issues with Bumblebee on Gentoo, please contact me.
+    </description>
+    <name>Vadim A. Misbakh-Soloviev</name>
+  </maintainer>
+  <longdescription>
+    A rewrite of the original Bumblebee service, providing an elegant and stable
+    means of managing Optimus hybrid graphics chipsets. A primary goal of this
+    project is to not only enable use of the discrete GPU for rendering, but
+    also to enable smart power management of the dGPU when it's not in use.
+  </longdescription>
+  <use>
+    <flag name="powersave">Add dependency on sys-kernel/bbswitch for PM feature
+    </flag>
+  </use>
 </pkgmetadata>
