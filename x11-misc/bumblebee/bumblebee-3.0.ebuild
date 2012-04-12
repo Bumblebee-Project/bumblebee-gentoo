@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-DESCRIPTION=""
+DESCRIPTION="Service providing an elegant and stable means of managing Optimus hybrid graphics chipsets"
 HOMEPAGE="https://github.com/Bumblebee-Project/Bumblebee"
 
 if [[ ${PV} =~ "9999" ]]; then
@@ -20,7 +20,7 @@ fi;
 inherit autotools multilib eutils ${SCM_ECLASS}
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 
 IUSE="video_cards_nouveau video_cards_nvidia +powersave"
 
@@ -45,13 +45,23 @@ src_prepare() {
 }
 
 src_configure() {
-	( ! use video_cards_nvidia && ! use video_cards_nouveau ) && \
-	die "You should enable at least one of supported VIDEO_CARDS!"
+	use video_cards_nvidia || use video_cards_nouveau \
+		|| die "You should enable at least one of supported VIDEO_CARDS!"
 
-	use video_cards_nvidia &&
-	ECONF_PARAMS="CONF_DRIVER=nvidia CONF_DRIVER_MODULE_NVIDIA=nvidia \
-	CONF_LDPATH_NVIDIA=/usr/$(get_libdir)/opengl/nvidia/lib:/usr/lib32/opengl/nvidia/lib \
-	CONF_MODPATH_NVIDIA=/usr/$(get_libdir)/opengl/nvidia/lib,/usr/$(get_libdir)/opengl/nvidia/extensions,/usr/$(get_libdir)/xorg/modules/drivers,/usr/$(get_libdir)/xorg/modules"
+	if use video_cards_nvidia ; then
+		# Get paths to GL libs for all ABIs
+		local nvlib=""
+		for i in  $(get_all_libdirs) ; do
+			nvlib="${nvlib}:/usr/${i}/opengl/nvidia/lib"
+		done
+
+		local nvpref="/usr/$(get_libdir)/opengl/nvidia"
+		local xorgpref="/usr/$(get_libdir)/xorg/modules"
+		ECONF_PARAMS="CONF_DRIVER=nvidia CONF_DRIVER_MODULE_NVIDIA=nvidia \
+			CONF_LDPATH_NVIDIA=${nvlib#:} \
+			CONF_MODPATH_NVIDIA=${nvpref}/lib,${nvpref}/extensions,${xorgpref}/drivers,${xorgpref}"
+	fi
+
 	econf ${ECONF_PARAMS}
 }
 
