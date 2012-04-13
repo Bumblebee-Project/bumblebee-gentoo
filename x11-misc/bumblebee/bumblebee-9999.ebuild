@@ -1,1 +1,1 @@
-bumblebee-3.0.ebuild
+bumblebee-3.0-r1.ebuild

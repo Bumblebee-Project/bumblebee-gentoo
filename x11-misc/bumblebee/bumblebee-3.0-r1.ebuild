@@ -15,14 +15,14 @@ if [[ ${PV} =~ "9999" ]]; then
 else
 	SRC_URI="https://github.com/downloads/Bumblebee-Project/${PN/bu/Bu}/${P/bu/Bu}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-fi;
+fi
 
 inherit autotools multilib eutils ${SCM_ECLASS}
 
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="video_cards_nouveau video_cards_nvidia +powersave"
+IUSE="+powersave video_cards_nouveau video_cards_nvidia"
 
 RDEPEND="x11-misc/virtualgl
 	powersave? ( sys-kernel/bbswitch )
