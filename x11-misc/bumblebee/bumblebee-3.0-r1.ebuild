@@ -17,7 +17,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit autotools multilib eutils ${SCM_ECLASS}
+inherit autotools eutils multilib ${SCM_ECLASS}
 
 SLOT="0"
 LICENSE="GPL-3"
@@ -73,12 +73,13 @@ src_install() {
 }
 
 pkg_preinst() {
-	enewgroup bumblebee;
+	! use video_cards_nvidia && rm "${D}"/etc/bumblebee/xorg.conf.nvidia
+	! use video_cards_nouveau && rm "${D}"/etc/bumblebee/xorg.conf.nouveau
+
+	enewgroup bumblebee
 }
 
 pkg_postinst() {
-	! use video_cards_nvidia && rm "${DESTDIR}"/etc/bumblebee/xorg.conf.nvidia
-	! use video_cards_nouveau && rm "${DESTDIR}"/etc/bumblebee/xorg.conf.nouveau
 	ewarn "This is *NOT* all! Bumblebee still *NOT* ready to use."
 	ewarn "You may need to setup your /etc/bumblebee/bumblebee.conf!"
 	ewarn "For example, default config suggests you have bbswitch installed."
