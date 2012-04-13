@@ -4,9 +4,6 @@
 
 EAPI="4"
 
-DESCRIPTION="Service providing an elegant and stable means of managing Optimus hybrid graphics chipsets"
-HOMEPAGE="https://github.com/Bumblebee-Project/Bumblebee"
-
 if [[ ${PV} =~ "9999" ]]; then
 	SCM_ECLASS="git-2"
 	EGIT_REPO_URI="https://github.com/Bumblebee-Project/${PN/bu/Bu}.git"
@@ -18,6 +15,9 @@ else
 fi
 
 inherit autotools eutils multilib ${SCM_ECLASS}
+
+DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
+HOMEPAGE="https://github.com/Bumblebee-Project/Bumblebee"
 
 SLOT="0"
 LICENSE="GPL-3"
