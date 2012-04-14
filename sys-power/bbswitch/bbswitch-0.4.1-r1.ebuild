@@ -14,9 +14,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit eutils linux-mod ${SCM_ECLASS}
+inherit linux-mod ${SCM_ECLASS}
 
-DESCRIPTION="Toggle the discrete graphics card"
+DESCRIPTION="Toggle discrete NVIDIA Optimus graphics card"
 HOMEPAGE="https://github.com/Bumblebee-Project/bbswitch"
 
 SLOT="0"
