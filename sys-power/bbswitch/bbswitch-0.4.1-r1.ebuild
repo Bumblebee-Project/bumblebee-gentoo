@@ -4,9 +4,6 @@
 
 EAPI="4"
 
-DESCRIPTION="Toggle the discrete graphics card"
-HOMEPAGE="https://github.com/Bumblebee-Project/bbswitch"
-
 if [[ ${PV} =~ "9999" ]]; then
 	SCM_ECLASS="git-2"
 	EGIT_REPO_URI="https://github.com/Bumblebee-Project/${PN}.git"
@@ -15,9 +12,12 @@ if [[ ${PV} =~ "9999" ]]; then
 else
 	SRC_URI="https://github.com/downloads/Bumblebee-Project/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-fi;
+fi
 
 inherit eutils linux-mod ${SCM_ECLASS}
+
+DESCRIPTION="Toggle the discrete graphics card"
+HOMEPAGE="https://github.com/Bumblebee-Project/bbswitch"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -32,11 +32,14 @@ MODULE_NAMES="bbswitch(acpi)"
 
 pkg_setup() {
 	linux-mod_pkg_setup
+
 	BUILD_TARGETS="default"
+	BUILD_PARAMS="KVERSION=${KV_FULL}"
 }
 
 src_install() {
 	insinto /etc/modprobe.d
-	newins "${FILESDIR}"/bbswitch.modprobe bbswitch.conf || die
+	newins "${FILESDIR}"/bbswitch.modprobe bbswitch.conf
+
 	linux-mod_src_install
 }
