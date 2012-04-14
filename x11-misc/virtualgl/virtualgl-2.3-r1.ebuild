@@ -4,9 +4,6 @@
 
 EAPI="4"
 
-DESCRIPTION="Run OpenGL applications on remote display software with full 3D hardware acceleration"
-HOMEPAGE="http://www.virtualgl.org/"
-
 if [[ ${PV} =~ "9999" ]]; then
 	SCM_ECLASS="subversion"
 	ESVN_REPO_URI="https://virtualgl.svn.sourceforge.net/svnroot/virtualgl/vgl/trunk"
@@ -18,12 +15,15 @@ else
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="mirror://sourceforge/${PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-fi;
+fi
 
 inherit cmake-utils ${SCM_ECLASS}
 
+DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"
+HOMEPAGE="http://www.virtualgl.org/"
+
 SLOT="0"
-LICENSE="LGPL-2.1 wxWinLL-3.1"
+LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"
 IUSE="ssl"
 
 RDEPEND="ssl? ( dev-libs/openssl )
@@ -38,12 +38,8 @@ DEPEND="dev-util/cmake
 	${RDEPEND}"
 
 src_prepare() {
-	ewarn "Note, that you don't need libjpeg-turbo from my overlay anymore"
-	ewarn "(since I've rewrited ebuild to use shared one)"
-
-	cd "${S}";
 	for file in rr/vglgenkey rr/vglrun rr/vglserver_config doc/index.html; do
-		sed -e "s#/etc/opt#/etc#g" -i ${file};
+		sed -e "s#/etc/opt#/etc#g" -i ${file}
 	done
 
 	default
@@ -52,14 +48,15 @@ src_prepare() {
 mlib_configure() {
 	einfo "Multilib build enabled!"
 	einfo "Building 32bit libs..."
-	export ml_builddir="${WORKDIR}/build32"
-	mkdir -p "${ml_builddir}"
+
+	ml_builddir="${WORKDIR}/build32"
+	mkdir "${ml_builddir}"
 	pushd "${ml_builddir}" >/dev/null
 
-	export CFLAGS="-m32 -O2 -march=i686 -pipe"
-	export CXXFLAGS="${CFLAGS}"
-	export LDFLAGS="-m32"
-	export CMAKE_BUILD_DIR="${ml_builddir}"
+	local CFLAGS="-m32 -O2 -march=native -pipe"
+	local CXXFLAGS="${CFLAGS}"
+	local LDFLAGS="-m32"
+	local CMAKE_BUILD_DIR="${ml_builddir}"
 
 	mycmakeargs=(
 		$(cmake-utils_use ssl VGL_USESSL)
@@ -71,14 +68,19 @@ mlib_configure() {
 		-DVGL_FAKELIBDIR=/usr/fakelib/32
 	)
 	cmake-utils_src_configure
-	emake || die
+
+	# Make it also here to be sure we are using this config
+	emake
+
 	popd >/dev/null
-	unset CFLAGS CXXFLAGS LDFLAGS CMAKE_BUILD_DIR
 	einfo "Building 64bit libs..."
 }
 
 src_configure() {
+	# Configure and make 32bit version on multilib
 	use amd64 && use multilib && ABI=x86 mlib_configure
+
+	# Configure native version
 	mycmakeargs=(
 		$(cmake-utils_use ssl VGL_USESSL)
 		-DVGL_DOCDIR=/usr/share/doc/"${P}"
@@ -92,19 +94,23 @@ src_configure() {
 }
 
 src_install() {
+	# Install 32bit version on multilib
 	use amd64 && use multilib && (
-	cd "${ml_builddir}"
-	emake DESTDIR="${D}" install || die "Failed to install 32bit libs!"
-	cd "${S}"
+		pushd "${ml_builddir}" >/dev/null
+		emake DESTDIR="${D}" install || die "Failed to install 32bit libs!"
+		popd >/dev/null
 	)
+
+	# Install native version
 	cmake-utils_src_install
 
+	# Make config dir
 	dodir /etc/VirtualGL
 	fowners root:video /etc/VirtualGL
 	fperms 0750 /etc/VirtualGL
 	newinitd "${FILESDIR}/vgl.initd" vgl
 	newconfd "${FILESDIR}/vgl.confd" vgl
+
 	# Rename glxinfo to vglxinfo to avoid conflict with x11-apps/mesa-progs
 	mv "${D}"/usr/bin/{,v}glxinfo
-#	rm "${D}/usr/bin/vglserver_config" "${D}/usr/bin/vglgenkey"
 }
