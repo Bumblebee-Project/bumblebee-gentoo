@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Apr 2012; Vadim A. Misbakh-Soloviov <mva@gentoo.org> Manifest:
+  vgl fix + manifest multisigning possible fix
+
   29 Mar 2012; Vadim A. Misbakh-Soloviov <mva@gentoo.org> Manifest:
   Nothing new. Just commit signed metadata.
 

@@ -5,7 +5,7 @@ DISPLAY="${DISPLAY:-:0}"
 # Make it a function in case we have to repeat it in init script later
 set_xauth() {
 
-# common case (works in all tested environments):
+# common case (works in almost all tested environments (except of lightdm)):
 XAUTHORITY="$(ps wwax -C X,Xorg -o args= --sort=-stime | grep -m 1 -o '\B[-]auth\s*/var\S*auth\S*' | cut -d ' ' -f 2)"
 
 # kdm and some others:
@@ -16,6 +16,9 @@ XAUTHORITY="$(ps wwax -C X,Xorg -o args= --sort=-stime | grep -m 1 -o '\B[-]auth
 
 # slim:
 # XAUTHORITY="/var/run/slim.auth"
+
+# lightdm:
+# XAUTHORITY="/var/run/lightdm/root/${DISPLAY}"
 
 }
 set_xauth

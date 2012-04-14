@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Apr 2012; Vadim A. Misbakh-Soloviov <mva@gentoo.org> files/vgl.confd:
+  vgl fix + manifest multisigning possible fix
+
   12 Apr 2012; Reinis Danne <rei4dan@gmail.com> files/vgl.confd,
   files/vgl.initd:
   Update configuration file and init script to account for cases when X startup
