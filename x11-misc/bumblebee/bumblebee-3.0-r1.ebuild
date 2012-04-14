@@ -25,7 +25,7 @@ LICENSE="GPL-3"
 IUSE="+powersave video_cards_nouveau video_cards_nvidia"
 
 RDEPEND="x11-misc/virtualgl
-	powersave? ( sys-kernel/bbswitch )
+	powersave? ( sys-drivers/bbswitch )
 	virtual/opengl
 	x11-base/xorg-drivers[video_cards_nvidia?,video_cards_nouveau?]"
 DEPEND=">=sys-devel/autoconf-2.68
