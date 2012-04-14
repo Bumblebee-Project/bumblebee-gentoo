@@ -1,0 +1,2 @@
+move sys-kernel/bbswitch sys-power/bbswitch
+move sys-kernel/acpi-stuff sys-power/acpi-stuff
