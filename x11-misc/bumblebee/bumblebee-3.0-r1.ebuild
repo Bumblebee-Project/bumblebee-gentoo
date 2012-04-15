@@ -4,23 +4,15 @@
 
 EAPI="4"
 
-if [[ ${PV} =~ "9999" ]]; then
-	SCM_ECLASS="git-2"
-	EGIT_REPO_URI="https://github.com/Bumblebee-Project/${PN/bu/Bu}.git"
-	SRC_URI=""
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/downloads/Bumblebee-Project/${PN/bu/Bu}/${P/bu/Bu}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
-inherit autotools eutils multilib ${SCM_ECLASS}
+inherit eutils multilib
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
 HOMEPAGE="https://github.com/Bumblebee-Project/Bumblebee"
+SRC_URI="https://github.com/downloads/Bumblebee-Project/${PN/bu/Bu}/${P/bu/Bu}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="+bbswitch video_cards_nouveau video_cards_nvidia"
 
@@ -39,9 +31,6 @@ DEPEND=">=sys-devel/autoconf-2.68
 
 src_prepare() {
 	epatch_user
-	if [[ ${PV} =~ "9999" ]]; then
-		eautoreconf
-	fi
 }
 
 src_configure() {
