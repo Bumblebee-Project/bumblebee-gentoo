@@ -37,6 +37,9 @@ RDEPEND="ssl? ( dev-libs/openssl )
 DEPEND="dev-util/cmake
 	${RDEPEND}"
 
+CMAKE_VERBOSE=1
+build32_dir="${WORKDIR}/${P}_build32"
+
 src_prepare() {
 	for file in rr/vglgenkey rr/vglrun rr/vglserver_config doc/index.html; do
 		sed -e "s#/etc/opt#/etc#g" -i ${file}
@@ -45,40 +48,31 @@ src_prepare() {
 	default
 }
 
-mlib_configure() {
-	einfo "Multilib build enabled!"
-	einfo "Building 32bit libs..."
-
-	ml_builddir="${WORKDIR}/build32"
-	mkdir "${ml_builddir}"
-	pushd "${ml_builddir}" >/dev/null
-
-	local CFLAGS="-m32 -O2 -march=native -pipe"
-	local CXXFLAGS="${CFLAGS}"
-	local LDFLAGS="-m32"
-	local CMAKE_BUILD_DIR="${ml_builddir}"
-
-	mycmakeargs=(
-		$(cmake-utils_use ssl VGL_USESSL)
-		-DVGL_DOCDIR=/usr/share/doc/"${P}"
-		-DVGL_LIBDIR=/usr/$(get_libdir)
-		-DTJPEG_INCLUDE_DIR=/usr/include
-		-DTJPEG_LIBRARY=/usr/$(get_libdir)/libturbojpeg.so
-		-DCMAKE_LIBRARY_PATH=/usr/lib32
-		-DVGL_FAKELIBDIR=/usr/fakelib/32
-	)
-	cmake-utils_src_configure
-
-	# Make it also here to be sure we are using this config
-	emake
-
-	popd >/dev/null
-	einfo "Building 64bit libs..."
-}
-
 src_configure() {
-	# Configure and make 32bit version on multilib
-	use amd64 && use multilib && ABI=x86 mlib_configure
+	# Configure 32bit version on multilib
+	use amd64 && use multilib && (
+		einfo "Multilib build enabled!"
+		einfo "Configuring 32bit libs..."
+
+		local ABI=x86
+		local CFLAGS="${CFLAGS--O2 -march=native -pipe} -m32"
+		local CXXFLAGS="${CFLAGS}"
+		local LDFLAGS="${LDFLAGS} -m32"
+		local CMAKE_BUILD_DIR="${build32_dir}"
+
+		mycmakeargs=(
+			$(cmake-utils_use ssl VGL_USESSL)
+			-DVGL_DOCDIR=/usr/share/doc/"${P}"
+			-DVGL_LIBDIR=/usr/$(get_libdir)
+			-DTJPEG_INCLUDE_DIR=/usr/include
+			-DTJPEG_LIBRARY=/usr/$(get_libdir)/libturbojpeg.so
+			-DCMAKE_LIBRARY_PATH=/usr/lib32
+			-DVGL_FAKELIBDIR=/usr/fakelib/32
+		)
+		cmake-utils_src_configure
+
+		einfo "Configuring 64bit libs..."
+	)
 
 	# Configure native version
 	mycmakeargs=(
@@ -93,12 +87,28 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_compile() {
+	# Make 32bit version on multilib
+	use amd64 && use multilib && (
+		einfo "Building 32bit libs..."
+		local CMAKE_BUILD_DIR="${build32_dir}"
+		cmake-utils_src_compile
+
+		einfo "Building 64bit libs..."
+	)
+
+	# Make native version
+	cmake-utils_src_compile
+}
+
 src_install() {
 	# Install 32bit version on multilib
 	use amd64 && use multilib && (
-		pushd "${ml_builddir}" >/dev/null
-		emake DESTDIR="${D}" install || die "Failed to install 32bit libs!"
-		popd >/dev/null
+		einfo "Installing 32bit libs..."
+		local CMAKE_BUILD_DIR="${build32_dir}"
+		cmake-utils_src_install
+
+		einfo "Installing 64bit libs..."
 	)
 
 	# Install native version
