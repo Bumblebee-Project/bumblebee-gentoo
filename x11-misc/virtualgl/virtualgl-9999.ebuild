@@ -114,3 +114,7 @@ src_install() {
 	# Rename glxinfo to vglxinfo to avoid conflict with x11-apps/mesa-progs
 	mv "${D}"/usr/bin/{,v}glxinfo
 }
+
+pkg_postinst() {
+	ewarn "You might need to adjust /etc/conf.d/vgl for your setup!"
+}
