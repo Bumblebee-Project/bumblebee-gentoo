@@ -4,26 +4,16 @@
 
 EAPI="4"
 
-if [[ ${PV} =~ "9999" ]]; then
-	SCM_ECLASS="subversion"
-	ESVN_REPO_URI="https://virtualgl.svn.sourceforge.net/svnroot/virtualgl/vgl/trunk"
-	SRC_URI=""
-	KEYWORDS=""
-else
-	MY_PN="VirtualGL"
-	MY_P="${MY_PN}-${PV}"
-	S="${WORKDIR}/${MY_P}"
-	SRC_URI="mirror://sourceforge/${PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
-inherit cmake-utils ${SCM_ECLASS}
+inherit cmake-utils subversion
 
 DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"
 HOMEPAGE="http://www.virtualgl.org/"
+ESVN_REPO_URI="https://virtualgl.svn.sourceforge.net/svnroot/virtualgl/vgl/trunk"
+SRC_URI=""
 
 SLOT="0"
 LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"
+KEYWORDS=""
 IUSE="ssl"
 
 RDEPEND="ssl? ( dev-libs/openssl )
