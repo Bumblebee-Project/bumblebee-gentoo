@@ -15,7 +15,7 @@
     also to enable smart power management of the dGPU when it's not in use.
   </longdescription>
   <use>
-    <flag name="powersave">Add dependency on sys-kernel/bbswitch for PM feature
-    </flag>
+    <flag name="bbswitch">Add dependency on <pkg>sys-kernel/bbswitch</pkg> for
+    PM feature</flag>
   </use>
 </pkgmetadata>
