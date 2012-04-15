@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit eutils multilib
+inherit multilib
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
 HOMEPAGE="https://github.com/Bumblebee-Project/Bumblebee"
@@ -28,10 +28,6 @@ DEPEND=">=sys-devel/autoconf-2.68
 	x11-libs/libX11
 	dev-libs/libbsd
 	sys-apps/help2man"
-
-src_prepare() {
-	epatch_user
-}
 
 src_configure() {
 	use video_cards_nvidia || use video_cards_nouveau \

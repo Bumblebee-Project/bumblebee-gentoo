@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit autotools eutils git-2 multilib
+inherit autotools git-2 multilib
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
 HOMEPAGE="https://github.com/Bumblebee-Project/Bumblebee"
@@ -31,7 +31,7 @@ DEPEND=">=sys-devel/autoconf-2.68
 	sys-apps/help2man"
 
 src_prepare() {
-	epatch_user
+	default
 	eautoreconf
 }
 
