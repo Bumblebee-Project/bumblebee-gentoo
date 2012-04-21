@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit multilib
+inherit base multilib
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
 HOMEPAGE="https://github.com/Bumblebee-Project/Bumblebee"
