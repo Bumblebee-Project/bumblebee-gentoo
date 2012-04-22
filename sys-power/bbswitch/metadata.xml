@@ -6,7 +6,7 @@
     <description>
       If you have any issues with Bumblebee on Gentoo, please contact me.
     </description>
-    <name>Vadim A. Misbakh-Soloviev</name>
+    <name>Vadim A. Misbakh-Soloviov</name>
   </maintainer>
   <longdescription>
     Kernel module which automatically detects the required ACPI calls for two
