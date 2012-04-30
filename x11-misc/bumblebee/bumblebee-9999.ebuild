@@ -71,8 +71,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	ewarn "This is *NOT* all! Bumblebee still *NOT* ready to use."
+	ewarn "In order to use Bumblebee, add your user to 'bumblebee' group."
 	ewarn "You may need to setup your /etc/bumblebee/bumblebee.conf!"
 	ewarn "For example, default config suggests you have bbswitch installed."
-	ewarn "Also you should add your user to 'bumblebee' group."
 }
