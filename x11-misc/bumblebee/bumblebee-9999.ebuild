@@ -59,6 +59,7 @@ src_configure() {
 src_install() {
 	newconfd "${FILESDIR}"/bumblebee.confd bumblebee
 	newinitd "${FILESDIR}"/bumblebee.initd bumblebee
+	newenvd  "${FILESDIR}"/bumblebee.envd 99bumblebee
 	default
 }
 
