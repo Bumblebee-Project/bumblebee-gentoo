@@ -1,6 +1,11 @@
-# ChangeLog for sys-kernel/bbswitch
+# ChangeLog for sys-power/bbswitch
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*bbswitch-0.4.2 (30 Apr 2012)
+
+  30 Apr 2012; Reinis Danne <rei4dan@gmail.com> +bbswitch-0.4.2.ebuild:
+  Bump to version 0.4.2
 
   14 Apr 2012; Vadim A. Misbakh-Soloviov <mva@gentoo.org> Manifest:
   vgl fix + manifest multisigning possible fix
