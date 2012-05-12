@@ -33,6 +33,7 @@ pkg_setup() {
 src_install() {
 	insinto /etc/modprobe.d
 	newins "${FILESDIR}"/bbswitch.modprobe bbswitch.conf
+	dodoc NEWS
 
 	linux-mod_src_install
 }

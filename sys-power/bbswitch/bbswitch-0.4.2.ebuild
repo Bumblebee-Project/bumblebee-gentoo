@@ -8,7 +8,7 @@ inherit linux-mod
 
 DESCRIPTION="Toggle discrete NVIDIA Optimus graphics card"
 HOMEPAGE="https://github.com/Bumblebee-Project/bbswitch"
-SRC_URI="https://github.com/downloads/Bumblebee-Project/${PN}/${P}.tar.gz"
+SRC_URI="mirror://github/Bumblebee-Project/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -32,6 +32,7 @@ pkg_setup() {
 src_install() {
 	insinto /etc/modprobe.d
 	newins "${FILESDIR}"/bbswitch.modprobe bbswitch.conf
+	dodoc NEWS
 
 	linux-mod_src_install
 }
