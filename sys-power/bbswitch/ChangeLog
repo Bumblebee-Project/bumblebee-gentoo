@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 May 2012; Reinis Danne <rei4dan@gmail.com> -bbswitch-0.4.1-r1.ebuild:
+  Remove old.
+
 *bbswitch-0.4.2 (30 Apr 2012)
 
   30 Apr 2012; Reinis Danne <rei4dan@gmail.com> +bbswitch-0.4.2.ebuild:
