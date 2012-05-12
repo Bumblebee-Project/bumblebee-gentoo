@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit cmake-utils subversion
+inherit cmake-utils multilib subversion
 
 DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"
 HOMEPAGE="http://www.virtualgl.org/"
@@ -14,7 +14,7 @@ SRC_URI=""
 SLOT="0"
 LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"
 KEYWORDS=""
-IUSE="ssl"
+IUSE="multilib ssl"
 
 RDEPEND="ssl? ( dev-libs/openssl )
 	media-libs/libjpeg-turbo
@@ -23,16 +23,14 @@ RDEPEND="ssl? ( dev-libs/openssl )
 	x11-libs/libXv
 	multilib? ( app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-baselibs )
 	virtual/opengl"
-
-DEPEND="dev-util/cmake
-	${RDEPEND}"
+DEPEND="${RDEPEND}"
 
 CMAKE_VERBOSE=1
 build32_dir="${WORKDIR}/${P}_build32"
 
 src_prepare() {
 	for file in rr/vglgenkey rr/vglrun rr/vglserver_config doc/index.html; do
-		sed -e "s#/etc/opt#/etc#g" -i ${file}
+		sed -e "s#/etc/opt#/etc#g" -i ${file} || die
 	done
 
 	default
