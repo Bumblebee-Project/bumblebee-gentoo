@@ -30,15 +30,14 @@ DEPEND=">=sys-devel/autoconf-2.68
 	dev-libs/libbsd
 	sys-apps/help2man"
 
+REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"
+
 src_prepare() {
 	base_src_prepare
 	eautoreconf
 }
 
 src_configure() {
-	use video_cards_nvidia || use video_cards_nouveau \
-		|| die "You should enable at least one of supported VIDEO_CARDS!"
-
 	if use video_cards_nvidia ; then
 		# Get paths to GL libs for all ABIs
 		local nvlib=""
