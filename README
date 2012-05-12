@@ -1,3 +1,6 @@
-This is a gentoo overlay for Bumblebee-Project related packages.
+This is a Gentoo overlay for Bumblebee-Project related packages.
+
+Bumblebee is now available in the main portage tree, overlay is needed only for
+the live ebuilds and some other miscellaneous packages.
 
 If you have any questions — contact msva.
