@@ -8,7 +8,7 @@ inherit base multilib
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
 HOMEPAGE="https://github.com/Bumblebee-Project/Bumblebee"
-SRC_URI="https://github.com/downloads/Bumblebee-Project/${PN/bu/Bu}/${P/bu/Bu}.tar.gz"
+SRC_URI="mirror://github/Bumblebee-Project/${PN/bu/Bu}/${P/bu/Bu}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"
@@ -23,7 +23,7 @@ RDEPEND="x11-misc/virtualgl
 DEPEND=">=sys-devel/autoconf-2.68
 	sys-devel/automake
 	sys-devel/gcc
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	dev-libs/glib:2
 	x11-libs/libX11
 	dev-libs/libbsd

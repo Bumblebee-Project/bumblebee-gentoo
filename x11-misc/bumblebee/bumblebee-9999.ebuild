@@ -24,7 +24,7 @@ RDEPEND="x11-misc/virtualgl
 DEPEND=">=sys-devel/autoconf-2.68
 	sys-devel/automake
 	sys-devel/gcc
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	dev-libs/glib:2
 	x11-libs/libX11
 	dev-libs/libbsd
