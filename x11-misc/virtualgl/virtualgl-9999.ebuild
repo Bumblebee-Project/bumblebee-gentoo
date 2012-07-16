@@ -29,7 +29,7 @@ CMAKE_VERBOSE=1
 build32_dir="${WORKDIR}/${P}_build32"
 
 src_prepare() {
-	for file in rr/vglgenkey rr/vglrun rr/vglserver_config doc/index.html; do
+	for file in server/vglgenkey server/vglrun server/vglserver_config doc/index.html; do
 		sed -e "s#/etc/opt#/etc#g" -i ${file} || die
 	done
 
