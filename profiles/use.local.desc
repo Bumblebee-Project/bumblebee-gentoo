@@ -2,3 +2,4 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
+x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature

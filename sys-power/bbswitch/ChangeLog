@@ -2,27 +2,42 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Jun 2012; Vadim A. Misbakh-Soloviov <mva@mva.name>
+  -bbswitch-0.4.2.ebuild:
+  Fixing Gentoo #419649 and #419651 bugs
+
   12 May 2012; Reinis Danne <rei4dan@gmail.com> -bbswitch-0.4.1-r1.ebuild:
-  Remove old.
+  bbswitch: Remove old
+
+  12 May 2012; Reinis Danne <rei4dan@gmail.com> bbswitch-0.4.2.ebuild,
+  bbswitch-9999.ebuild:
+  bbswitch: Sync with the portage ebuilds
 
 *bbswitch-0.4.2 (30 Apr 2012)
 
   30 Apr 2012; Reinis Danne <rei4dan@gmail.com> +bbswitch-0.4.2.ebuild:
-  Bump to version 0.4.2
+  bbswitch: Bump to 0.4.2
 
-  14 Apr 2012; Vadim A. Misbakh-Soloviov <mva@gentoo.org> Manifest:
-  vgl fix + manifest multisigning possible fix
-
-  29 Mar 2012; Vadim A. Misbakh-Soloviov <mva@gentoo.org> Manifest:
-  Nothing new. Just commit signed metadata.
-
-*bbswitch-9999 (24 Feb 2012)
-*bbswitch-0.4.1-r1 (24 Feb 2012)
-
-  24 Feb 2012; Vadim A. Misbakh-Soloviov <mva@mva.name>
-  +bbswitch-0.4.1-r1.ebuild, +bbswitch-9999.ebuild, +files/bbswitch.modprobe,
-  +metadata.xml:
-  first commit
+  22 Apr 2012; Vadim A. Misbakh-Soloviov <mva@mva.name> metadata.xml:
+  Fixed mva's surname to phonetic transcription
 
   Signed-off-by: Vadim A. Misbakh-Soloviov <mva@mva.name>
+
+  15 Apr 2012; Reinis Danne <rei4dan@gmail.com> bbswitch-0.4.1-r1.ebuild,
+  bbswitch-9999.ebuild:
+  bbswitch: Clean up after split
+
+  14 Apr 2012; Reinis Danne <rei4dan@gmail.com> bbswitch-0.4.1-r1.ebuild:
+  bbswitch: Remove unused eclass, improve description
+
+  14 Apr 2012; Reinis Danne <rei4dan@gmail.com> bbswitch-0.4.1-r1.ebuild:
+  bbswitch: Build for eselected kernel, cleanup
+
+*bbswitch-9999 (14 Apr 2012)
+*bbswitch-0.4.1-r1 (14 Apr 2012)
+
+  14 Apr 2012; Vadim A. Misbakh-Soloviov <mva@mva.name>
+  +bbswitch-0.4.1-r1.ebuild, +bbswitch-9999.ebuild, +files/bbswitch.modprobe,
+  +metadata.xml:
+  correctly moving bbswitch to sys-power
 

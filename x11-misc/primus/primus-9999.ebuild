@@ -26,7 +26,7 @@ src_compile() {
 	emake LIBDIR=$(get_libdir)
 	if use multilib; then
 		local ABI=x86
-		emake LIBDIR=$(get_libdir)
+		emake LIBDIR=$(get_libdir) CXX="${CXX-g++} -m32"
 	fi
 }
 
