@@ -9,7 +9,7 @@ inherit multilib git-2
 DESCRIPTION="Faster OpenGL offloading for Bumblebee"
 HOMEPAGE="https://github.com/amonakov/primus"
 SRC_URI=""
-EGIT_REPO_URI="git://github.com/amonakov/primus.git"
+EGIT_REPO_URI="git://github.com/amonakov/primus.git https://github.com/amonakov/primus.git"
 
 LICENSE="ISC"
 SLOT="0"
@@ -26,7 +26,8 @@ src_compile() {
 	emake LIBDIR=$(get_libdir)
 	if use multilib; then
 		local ABI=x86
-		emake LIBDIR=$(get_libdir) CXX="${CXX-g++} -m32"
+		local CXXFLAGS="${CXXFLAGS} -m32"
+		emake LIBDIR=$(get_libdir)
 	fi
 }
 

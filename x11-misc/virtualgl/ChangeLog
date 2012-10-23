@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Oct 2012; Vadim A. Misbakh-Soloviov <mva@mva.name> virtualgl-9999.ebuild:
+  [x11-misc/primus,bumblebee,virtualgl] some build fixes
+
+  Signed-off-by: Vadim A. Misbakh-Soloviov <mva@mva.name>
+
   30 Jul 2012; Vadim A. Misbakh-Soloviov <mva@mva.name> files/vgl.confd:
   fixing VGL's conf.d to run ps without 'wwax' (to show only X[org], but not
   all process list)

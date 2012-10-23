@@ -33,11 +33,8 @@ REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"
 
 src_configure() {
 	if use video_cards_nvidia ; then
-		# Get paths to GL libs for all ABIs
-		local nvlib=""
-		for i in  $(get_all_libdirs) ; do
-			nvlib="${nvlib}:/usr/${i}/opengl/nvidia/lib"
-		done
+		# use ABI-independent hack (single quotes are necessarily!!!)
+		nvlib='/usr/$LIB/opengl/nvidia/lib'
 
 		local nvpref="/usr/$(get_libdir)/opengl/nvidia"
 		local xorgpref="/usr/$(get_libdir)/xorg/modules"

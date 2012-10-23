@@ -43,8 +43,8 @@ src_configure() {
 		einfo "Configuring 32bit libs..."
 
 		local ABI=x86
-		local CFLAGS="${CFLAGS--O2 -march=native -pipe} -m32"
-		local CXXFLAGS="${CFLAGS}"
+		local CFLAGS="${CFLAGS} -m32"
+		local CXXFLAGS="${CXXFLAGS} -m32"
 		local LDFLAGS="${LDFLAGS} -m32"
 		local CMAKE_BUILD_DIR="${build32_dir}"
 

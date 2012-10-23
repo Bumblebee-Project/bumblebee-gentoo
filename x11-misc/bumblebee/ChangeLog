@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Oct 2012; Vadim A. Misbakh-Soloviov <mva@mva.name>
+  bumblebee-3.0-r1.ebuild, bumblebee-9999.ebuild:
+  [x11-misc/primus,bumblebee,virtualgl] some build fixes
+
+  Signed-off-by: Vadim A. Misbakh-Soloviov <mva@mva.name>
+
   12 May 2012; Reinis Danne <rei4dan@gmail.com> bumblebee-3.0-r1.ebuild,
   bumblebee-9999.ebuild:
   bumblebee: Sync with the portage ebuilds
