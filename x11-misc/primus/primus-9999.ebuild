@@ -22,7 +22,7 @@ DEPEND="virtual/opengl"
 
 
 src_compile() {
-	export PRIMUS_libGLa="'"'"/usr/$$LIB/opengl/nvidia/lib/libGL.so.1"'"'"
+	export PRIMUS_libGLa='/usr/$$LIB/opengl/nvidia/lib/libGL.so.1'
 	emake LIBDIR=$(get_libdir)
 	if use multilib; then
 		local ABI=x86
