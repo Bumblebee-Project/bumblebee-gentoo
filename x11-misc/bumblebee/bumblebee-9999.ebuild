@@ -39,8 +39,9 @@ src_prepare() {
 
 src_configure() {
 	if use video_cards_nvidia ; then
-		# use ABI-independent hack (single quotes are necessarily!!!)
-		nvlib='/usr/$LIB/opengl/nvidia/lib'
+		# use ABI-independent path ($LIB is interpreted by ld.so, $$
+		# escapes $ for make
+		nvlib='/usr/$$LIB/opengl/nvidia/lib'
 
 		local nvpref="/usr/$(get_libdir)/opengl/nvidia"
 		local xorgpref="/usr/$(get_libdir)/xorg/modules"
