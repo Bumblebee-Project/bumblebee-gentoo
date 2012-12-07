@@ -46,7 +46,7 @@ src_configure() {
 		local CFLAGS="${CFLAGS} -m32"
 		local CXXFLAGS="${CXXFLAGS} -m32"
 		local LDFLAGS="${LDFLAGS} -m32"
-		local CMAKE_BUILD_DIR="${build32_dir}"
+		local BUILD_DIR="${build32_dir}"
 
 		mycmakeargs=(
 			$(cmake-utils_use ssl VGL_USESSL)
@@ -79,7 +79,7 @@ src_compile() {
 	# Make 32bit version on multilib
 	use amd64 && use multilib && (
 		einfo "Building 32bit libs..."
-		local CMAKE_BUILD_DIR="${build32_dir}"
+		local BUILD_DIR="${build32_dir}"
 		cmake-utils_src_compile
 
 		einfo "Building 64bit libs..."
@@ -93,7 +93,7 @@ src_install() {
 	# Install 32bit version on multilib
 	use amd64 && use multilib && (
 		einfo "Installing 32bit libs..."
-		local CMAKE_BUILD_DIR="${build32_dir}"
+		local BUILD_DIR="${build32_dir}"
 		cmake-utils_src_install
 
 		einfo "Installing 64bit libs..."
