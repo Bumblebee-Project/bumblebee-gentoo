@@ -55,7 +55,7 @@ src_configure() {
 			-DVGL_LIBDIR=/usr/$(get_libdir)
 			-DTJPEG_LIBRARY=/usr/$(get_libdir)/libturbojpeg.so
 			-DCMAKE_LIBRARY_PATH=/usr/$(get_libdir)
-			-DVGL_FAKELIBDIR=/usr/fakelib/${ABI}
+			-DVGL_FAKELIBDIR=/usr/$(get_libdir)/vgl-fakelib
 		)
 		cmake-utils_src_configure
 	}
