@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI="5"
 inherit autotools base git-2 multilib eutils readme.gentoo systemd user
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
@@ -19,7 +19,10 @@ IUSE="+bbswitch video_cards_nouveau video_cards_nvidia"
 RDEPEND="
 	virtual/opengl
 	x11-base/xorg-drivers[video_cards_nvidia?,video_cards_nouveau?]
-	x11-misc/virtualgl:=
+	|| (
+		x11-misc/primus:=
+		x11-misc/virtualgl:=
+	)
 	bbswitch? ( sys-power/bbswitch )
 "
 DEPEND="${RDEPEND}
