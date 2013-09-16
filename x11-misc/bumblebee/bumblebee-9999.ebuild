@@ -14,7 +14,7 @@ SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS=""
 
-IUSE="+bbswitch video_cards_nouveau video_cards_nvidia systemd"
+IUSE="+bbswitch video_cards_nouveau video_cards_nvidia"
 
 RDEPEND="
 	virtual/opengl
@@ -62,7 +62,7 @@ src_configure() {
 }
 
 src_compile() {
-	use systemd && scripts/systemd/bumblebeed.service
+	emake scripts/systemd/bumblebeed.service
 	default
 }
 
@@ -70,7 +70,7 @@ src_install() {
 	newconfd "${FILESDIR}"/bumblebee.confd bumblebee
 	newinitd "${FILESDIR}"/bumblebee.initd bumblebee
 	newenvd  "${FILESDIR}"/bumblebee.envd 99bumblebee
-	use systemd && systemd_dounit scripts/systemd/bumblebeed.service
+	systemd_dounit scripts/systemd/bumblebeed.service
 
 	readme.gentoo_create_doc
 
