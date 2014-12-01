@@ -19,10 +19,6 @@ IUSE="+bbswitch video_cards_nouveau video_cards_nvidia"
 RDEPEND="
 	virtual/opengl
 	x11-base/xorg-drivers[video_cards_nvidia?,video_cards_nouveau?]
-	|| (
-		x11-misc/primus:=
-		x11-misc/virtualgl:=
-	)
 	bbswitch? ( sys-power/bbswitch:= )
 "
 DEPEND="${RDEPEND}
@@ -31,6 +27,13 @@ DEPEND="${RDEPEND}
 	sys-apps/help2man
 	virtual/pkgconfig
 	x11-libs/libX11
+"
+
+PDEPEND="
+	|| (
+		x11-misc/primus:=
+		x11-misc/virtualgl:=
+	)
 "
 
 REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"

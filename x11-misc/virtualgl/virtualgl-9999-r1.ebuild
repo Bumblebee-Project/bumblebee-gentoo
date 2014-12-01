@@ -23,15 +23,24 @@ RDEPEND="
 	x11-libs/libXv
 	amd64? ( abi_x86_32? (
 		|| (
-			(
-				x11-libs/libX11[abi_x86_32]
-				x11-libs/libXext[abi_x86_32]
-				x11-libs/libXv[abi_x86_32]
-			)
-			app-emulation/emul-linux-x86-xlibs
+			>=media-libs/libjpeg-turbo-1.3.0-r3[abi_x86_32]
+			app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
 		)
-		app-emulation/emul-linux-x86-baselibs
-		app-emulation/emul-linux-x86-opengl
+		|| (
+			(
+				>=x11-libs/libX11-1.6.2[abi_x86_32]
+				>=x11-libs/libXext-1.3.2[abi_x86_32]
+				>=x11-libs/libXv-1.0.10[abi_x86_32]
+			)
+			app-emulation/emul-linux-x86-xlibs[-abi_x86_32]
+		)
+		|| (
+			(
+				>=virtual/glu-9.0-r1[abi_x86_32]
+				>=virtual/opengl-7.0-r1[abi_x86_32]
+			)
+			app-emulation/emul-linux-x86-opengl[-abi_x86_32]
+		)
 	) )
 	virtual/glu
 	virtual/opengl
