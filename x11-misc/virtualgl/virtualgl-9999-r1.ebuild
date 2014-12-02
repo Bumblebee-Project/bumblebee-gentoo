@@ -7,7 +7,7 @@ inherit cmake-multilib multilib systemd subversion
 
 DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"
 HOMEPAGE="http://www.virtualgl.org/"
-ESVN_REPO_URI="https://virtualgl.svn.sourceforge.net/svnroot/virtualgl/vgl/trunk"
+ESVN_REPO_URI="https://svn.code.sf.net/p/virtualgl/code/trunk"
 SRC_URI=""
 
 SLOT="0"
