@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 May 2015; Francesco Ferro <ferro@cpan.org> primus-9999.ebuild:
+  Added simple versioning support
+
   23 Oct 2012; Vadim A. Misbakh-Soloviov <mva@mva.name> primus-9999.ebuild:
   bumblebee,virtualgl] some build fixes
 
