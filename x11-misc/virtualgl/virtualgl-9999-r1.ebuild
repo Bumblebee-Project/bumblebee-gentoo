@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	# Use /var/lib, bug #428122
 	sed -e "s#/etc/opt#/var/lib#g" -i doc/unixconfig.txt doc/index.html doc/advancedopengl.txt \
-		server/vglrun server/vglgenkey server/vglserver_config || die
+		server/vglrun.in server/vglgenkey server/vglserver_config || die
 
 	default
 }
