@@ -3,11 +3,11 @@
 # $Header: $
 
 EAPI=5
-inherit cmake-multilib multilib systemd subversion
+inherit cmake-multilib multilib systemd git-r3
 
 DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"
 HOMEPAGE="http://www.virtualgl.org/"
-ESVN_REPO_URI="https://svn.code.sf.net/p/virtualgl/code/trunk"
+EGIT_REPO_URI="https://github.com/VirtualGL/virtualgl.git"
 SRC_URI=""
 
 SLOT="0"
@@ -51,6 +51,9 @@ src_prepare() {
 	# Use /var/lib, bug #428122
 	sed -e "s#/etc/opt#/var/lib#g" -i doc/unixconfig.txt doc/index.html doc/advancedopengl.txt \
 		server/vglrun.in server/vglgenkey server/vglserver_config || die
+	# in upstream commmit 5c4ece4b, they renamed this,
+	#  but they never fixed what referred to it
+	sed -e "s#ChangeLog.txt#ChangeLog.md#" -i doc/CMakeLists.txt || die
 
 	default
 }
