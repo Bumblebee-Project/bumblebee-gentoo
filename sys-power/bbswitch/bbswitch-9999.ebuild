@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
-
-inherit git-2 linux-mod
+EAPI="5"
+inherit linux-mod git-r3
 
 DESCRIPTION="Toggle discrete NVIDIA Optimus graphics card"
 HOMEPAGE="https://github.com/Bumblebee-Project/bbswitch"
@@ -12,12 +11,14 @@ EGIT_REPO_URI="https://github.com/Bumblebee-Project/${PN}.git"
 SRC_URI=""
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="virtual/linux-sources
-	sys-kernel/linux-headers"
+DEPEND="
+	virtual/linux-sources
+	sys-kernel/linux-headers
+"
 
 RDEPEND=""
 
@@ -33,7 +34,7 @@ pkg_setup() {
 src_install() {
 	insinto /etc/modprobe.d
 	newins "${FILESDIR}"/bbswitch.modprobe bbswitch.conf
-	dodoc NEWS
+	dodoc NEWS README.md
 
 	linux-mod_src_install
 }
