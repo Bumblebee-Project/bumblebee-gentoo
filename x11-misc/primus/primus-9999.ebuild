@@ -4,16 +4,25 @@
 
 EAPI=5
 
-inherit multilib-build git-2
+inherit multilib-build
 
+MY_AUTHOR="amonakov"
 DESCRIPTION="Faster OpenGL offloading for Bumblebee"
 HOMEPAGE="https://github.com/amonakov/primus"
-SRC_URI=""
-EGIT_REPO_URI="git://github.com/amonakov/primus.git https://github.com/amonakov/primus.git"
+if [[ ${PV} == "9999" ]] ; then
+	inherit git-r3
+	SRC_URI=""
+	EGIT_REPO_URI="git://github.com/${MY_AUTHOR}/${PN}.git
+		       https://github.com/${MY_AUTHOR}/${PN}.git"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/${MY_AUTHOR}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
+fi
+
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 RDEPEND="x11-misc/bumblebee[video_cards_nvidia]
