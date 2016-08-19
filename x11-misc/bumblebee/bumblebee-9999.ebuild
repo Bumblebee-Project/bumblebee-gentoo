@@ -8,7 +8,7 @@ inherit autotools git-r3 multilib eutils readme.gentoo-r1 systemd user
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
 HOMEPAGE="http://bumblebee-project.org https://github.com/Bumblebee-Project/Bumblebee"
 EGIT_REPO_URI="https://github.com/Bumblebee-Project/${PN/bu/Bu}.git"
-EGIT_BRANC="develop"
+EGIT_BRANCH="develop"
 SRC_URI=""
 
 SLOT="0"
