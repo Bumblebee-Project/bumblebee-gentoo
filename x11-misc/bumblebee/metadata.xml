@@ -2,9 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
-    <email>mva@mva.name</email>
+    <email>bumblebee@mva.name</email>
     <description>
-      If you have any issues with Bumblebee on Gentoo, please contact me.
+      If you have any issues with Bumblebee on Gentoo, please file a bug report on gentoo bugzilla.
+      P.S. Since I've no more optimus-powered laptop, this package requires new maintainer.
     </description>
     <name>Vadim A. Misbakh-Soloviov</name>
   </maintainer>
