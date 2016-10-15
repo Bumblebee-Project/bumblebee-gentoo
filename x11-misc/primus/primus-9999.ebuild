@@ -16,7 +16,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="x11-misc/bumblebee[video_cards_nvidia]
+RDEPEND="
+	x11-misc/bumblebee[video_cards_nvidia]
+	x11-drivers/nvidia-drivers[compat]
 "
 DEPEND="virtual/opengl"
 
