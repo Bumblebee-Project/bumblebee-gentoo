@@ -6,7 +6,7 @@ DISPLAY="${DISPLAY:-:0}"
 set_xauth() {
 
 # common case (works in almost all tested environments (except of lightdm)):
-XAUTHORITY="$(ps wwax -C X,Xorg -o args= --sort=-stime | grep -m 1 -o '\B[-]auth\s*/var\S*auth\S*' | cut -d ' ' -f 2)"
+XAUTHORITY="$(ps wwax -C X,Xorg -o args= --sort=-stime | grep -m 1 -o '\B[-]auth\s*/var\S*' | cut -d ' ' -f 2)"
 
 # kdm and some others:
 # XAUTHORITY="$(find /var/run/xauth/A${DISPLAY}-*|tail -n1)"

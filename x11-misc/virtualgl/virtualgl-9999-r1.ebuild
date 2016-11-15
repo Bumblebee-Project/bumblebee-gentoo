@@ -13,37 +13,27 @@ SRC_URI=""
 SLOT="0"
 LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"
 KEYWORDS=""
-IUSE="ssl"
+IUSE="ssl libressl"
 
 RDEPEND="
-	ssl? ( dev-libs/openssl )
-	media-libs/libjpeg-turbo
-	x11-libs/libX11
-	x11-libs/libXext
-	x11-libs/libXv
+	ssl? (
+		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+	)
+	media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXv[${MULTILIB_USEDEP}]
+	virtual/glu[${MULTILIB_USEDEP}]
+	virtual/opengl[${MULTILIB_USEDEP}]
 	amd64? ( abi_x86_32? (
-		|| (
-			>=media-libs/libjpeg-turbo-1.3.0-r3[abi_x86_32]
-			app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
-		)
-		|| (
-			(
-				>=x11-libs/libX11-1.6.2[abi_x86_32]
-				>=x11-libs/libXext-1.3.2[abi_x86_32]
-				>=x11-libs/libXv-1.0.10[abi_x86_32]
-			)
-			app-emulation/emul-linux-x86-xlibs[-abi_x86_32]
-		)
-		|| (
-			(
-				>=virtual/glu-9.0-r1[abi_x86_32]
-				>=virtual/opengl-7.0-r1[abi_x86_32]
-			)
-			app-emulation/emul-linux-x86-opengl[-abi_x86_32]
-		)
+		>=media-libs/libjpeg-turbo-1.3.0-r3[abi_x86_32]
+		>=x11-libs/libX11-1.6.2[abi_x86_32]
+		>=x11-libs/libXext-1.3.2[abi_x86_32]
+		>=x11-libs/libXv-1.0.10[abi_x86_32]
+		>=virtual/glu-9.0-r1[abi_x86_32]
+		>=virtual/opengl-7.0-r1[abi_x86_32]
 	) )
-	virtual/glu
-	virtual/opengl
 "
 DEPEND="${RDEPEND}"
 
@@ -61,8 +51,8 @@ src_prepare() {
 src_configure() {
 	abi_configure() {
 		local mycmakeargs=(
-			$(cmake-utils_use ssl VGL_USESSL)
-			-DVGL_DOCDIR=/usr/share/doc/"${P}"
+			-DVGL_USESSL=$(usex ssl)
+			-DVGL_DOCDIR=/usr/share/doc/"${PF}"
 			-DTJPEG_INCLUDE_DIR=/usr/include
 			-DVGL_LIBDIR=/usr/$(get_libdir)
 			-DTJPEG_LIBRARY=/usr/$(get_libdir)/libturbojpeg.so
@@ -90,4 +80,7 @@ src_install() {
 
 	# Rename glxinfo to vglxinfo to avoid conflict with x11-apps/mesa-progs
 	mv "${D}"/usr/bin/{,v}glxinfo || die
+
+	# Remove license files, bug 536284
+	rm "${D}"/usr/share/doc/${PF}/{LGPL.txt*,LICENSE*} || die
 }
