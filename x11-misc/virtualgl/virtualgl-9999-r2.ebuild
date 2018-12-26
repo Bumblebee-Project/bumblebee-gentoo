@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 inherit cmake-multilib multilib systemd git-r3
 
 DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"
