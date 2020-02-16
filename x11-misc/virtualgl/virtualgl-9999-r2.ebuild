@@ -1,18 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=6
+EAPI=7
 inherit cmake-multilib multilib systemd git-r3
 
 DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"
 HOMEPAGE="http://www.virtualgl.org/"
 EGIT_REPO_URI="https://github.com/VirtualGL/virtualgl.git"
-SRC_URI=""
 
 SLOT="0"
 LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"
-KEYWORDS=""
 IUSE="ssl libressl"
 
 RDEPEND="

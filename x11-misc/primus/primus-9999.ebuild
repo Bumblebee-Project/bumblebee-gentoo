@@ -1,20 +1,16 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=5
 
-inherit multilib-build git-2
+inherit multilib-build git-r3
 
 DESCRIPTION="Faster OpenGL offloading for Bumblebee"
 HOMEPAGE="https://github.com/amonakov/primus"
-SRC_URI=""
 EGIT_REPO_URI="git://github.com/amonakov/primus.git https://github.com/amonakov/primus.git"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="
 	x11-misc/bumblebee[video_cards_nvidia]

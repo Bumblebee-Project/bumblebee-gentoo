@@ -1,36 +1,33 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="4"
+EAPI=7
 
-DESCRIPTION=""
+DESCRIPTION="Optidesk"
 HOMEPAGE="https://github.com/Bumblebee-Project/optidesk"
 
+inherit autotools eutils
+
 if [[ ${PV} =~ "9999" ]]; then
-	SCM_ECLASS="git-2"
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Bumblebee-Project/${PN}.git"
-	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/downloads/Bumblebee-Project/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-fi;
-
-inherit autotools eutils ${SCM_ECLASS}
+fi
 
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE=""
-
 RDEPEND="dev-libs/glib:2"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	>=sys-devel/autoconf-2.68
 	sys-devel/automake
-	sys-devel/gcc"
+	sys-devel/gcc
+"
 
 src_prepare() {
-	epatch_user
+	default
 	eautoreconf
 }

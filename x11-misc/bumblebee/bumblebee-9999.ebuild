@@ -1,19 +1,16 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=6
+EAPI=7
 inherit autotools git-r3 multilib eutils readme.gentoo-r1 systemd user
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
 HOMEPAGE="http://bumblebee-project.org https://github.com/Bumblebee-Project/Bumblebee"
 EGIT_REPO_URI="https://github.com/Bumblebee-Project/${PN^}.git"
 EGIT_BRANCH="develop"
-SRC_URI=""
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS=""
 
 IUSE="+bbswitch video_cards_nouveau video_cards_nvidia"
 
