@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Few modules for ACPI debugging"
 HOMEPAGE="https://github.com/Lekensteyn/acpi-stuff"
 
-inherit eutils linux-mod
+inherit linux-mod
 
 if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3

@@ -11,6 +11,6 @@
     a menu entry with an alternative (optirun) version of the default launcher.
   </longdescription>
   <upstream>
-    <remote-id type="github">Bumblebee-Project/optidesk</remote-id>
+    <remote-id type="github">amonakov/primus</remote-id>
   </upstream>
 </pkgmetadata>

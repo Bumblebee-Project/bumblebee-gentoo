@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>mva@mva.name</email>
-    <description>
-      If you have any issues with Bumblebee on Gentoo, please contact me.
-    </description>
-    <name>Vadim A. Misbakh-Soloviov</name>
+  <maintainer type="person">
+    <email>mva@gentoo.org</email>
+    <name>Vadim AMisbakh-Soloviov</name>
   </maintainer>
   <longdescription>
     ACPI related stuff for analysis of DSDT / SSDT tables which the goal to find
     calls to toggle nVidia (r) Optimus (tm) cards.
   </longdescription>
-  <use>
-  </use>
+  <upstream>
+    <remote-id type="github">Lekensteyn/acpi-stuff</remote-id>
+  </upstream>
 </pkgmetadata>

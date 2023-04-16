@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DESCRIPTION="Optidesk"
+DESCRIPTION="Tool to add .desktop files to be used by optirun"
 HOMEPAGE="https://github.com/Bumblebee-Project/optidesk"
 
-inherit autotools eutils
+inherit autotools
 
 if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3

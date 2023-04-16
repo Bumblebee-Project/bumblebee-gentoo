@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,17 +14,19 @@ SLOT="0"
 
 RDEPEND="
 	x11-misc/bumblebee[video_cards_nvidia]
-	x11-drivers/nvidia-drivers[compat]
+	x11-drivers/nvidia-drivers
 "
 DEPEND="virtual/opengl"
 
+# TODO: XXX: REWRITE ALL OF THIS, NVIDIA IS NO MORE non-GLVND
+# ref: https://github.com/amonakov/primus/issues/206
 
 src_compile() {
 	export PRIMUS_libGLa='/usr/$$LIB/opengl/nvidia/lib/libGL.so.1'
 	mymake() {
 		emake LIBDIR=$(get_libdir)
 	}
-	multilib_parallel_foreach_abi mymake
+	multilib_foreach_abi mymake
 }
 
 src_install() {
@@ -32,7 +34,7 @@ src_install() {
 	dobin primusrun
 	myinst() {
 		insinto /usr/$(get_libdir)/primus
-		doins ${S}/$(get_libdir)/libGL.so.1
+		doins "${S}"/$(get_libdir)/libGL.so.1
 	}
 	multilib_foreach_abi myinst
 }
