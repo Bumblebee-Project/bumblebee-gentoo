@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>mva@mva.name</email>
-    <description>
-      If you have any issues with Bumblebee on Gentoo, please contact me.
-    </description>
-    <name>Vadim A. Misbakh-Soloviov</name>
+  <maintainer type="person">
+    <email>mva@gentoo.org</email>
+    <name>Vadim Misbakh-Soloviov</name>
   </maintainer>
   <longdescription>
     Kernel module which automatically detects the required ACPI calls for two
     kinds of Optimus laptops for safe disabling/enabling the discrete graphics card.
   </longdescription>
-  <use>
-  </use>
+  <upstream>
+    <remote-id type="github">Bumblebee-Project/bbswitch</remote-id>
+  </upstream>
 </pkgmetadata>
